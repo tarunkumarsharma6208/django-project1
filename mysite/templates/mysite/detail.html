@@ -1,0 +1,16 @@
+{% extends 'mysite/base.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 my-4">
+            <img height="300px" src="{{ item_view.image }}">
+        </div>
+        <div class="col-md-6">
+            <h1> {{ item_view.name }}</h1>
+            <h5> Rs {{ item_view.price }}</h5>
+            <p>{{ item_view.description}}</p>
+            <a href="{% url 'mysite:delete_item' item_view.id %}"><button type="button" class="btn btn-primary">Delete</button></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

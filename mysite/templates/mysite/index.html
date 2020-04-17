@@ -1,0 +1,41 @@
+{% extends 'mysite/base.html' %}
+{% block body %}
+<style type="text/css">
+*{
+ margin: 0px;
+ padding: 0px;
+}
+.main{
+ margin: 2%;
+}
+.card{
+     display: inline-block;
+     box: 2px 2px 20px black;
+     border-radius: 5px;
+     margin: 2%;
+    }
+.image img{
+  width: 100%;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  }
+</style>
+<!--cart starting hare-->
+<div class="container-fluid padding ">
+    <div class="row padding text-center">
+    {% for i in item %}
+      <div class="col-md-4 my-4">
+        <div class="card">
+        <a href="{% url 'mysite:detailview' i.id %}"><img height="250px" class="card-img-top" src="{{ i.image }}"></a>
+          <div class="card-body">
+              <a href="{% url 'mysite:detailview' i.id %}"><h5 class="card-title " id="name">{{ i.name }}</h5></a>
+              <p class="card-text ">{{ i.description |slice:"0:30" }}...</p>
+              <h5 class="text-center">Rs {{ i.price }}</h5>
+              <button class="btn btn-primary cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
